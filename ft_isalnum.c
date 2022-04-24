@@ -6,7 +6,7 @@
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:37:48 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/07 20:30:38 by yuseiikeda       ###   ########.fr       */
+/*   Updated: 2022/04/21 11:52:55 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,40 @@ int	ft_isalnum(int c)
 		|| ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
 }
 
-// int main(void)
+// int	main()
 // {
-// 	int i;
-// 	i = ' ';
+// 	int	test1;
+// 	test1 = '0';
 
-// 	printf("%d", ft_isalnum(i));
+// 	int test2;
+// 	test2 = 'a';
+
+// 	int test3;
+// 	test3 = 'A';
+// 	while (test1 <= '9')
+// 	{
+// 		printf("%d",ft_isdigit(test1));
+// 		test1++;
+// 	}
+// 	printf("\n");
+
+// 	while(test2 <= 'z')
+// 	{
+// 		printf("%d", ft_isdigit(test2));
+// 		test2++;
+// 	}
+// 	printf("\n");
+
+// 	while (test3 <= 'Z')
+// 	{
+// 		printf("%d", ft_isdigit(test3));
+// 		test3++;
+// 	}
+// 	printf("\n");
+// 	return (0);
 // }
+
+/*
+1cの文字が'0'～'9'/'A'～'Z'/'a'～'z'の場合は0以外の値、それ以外の場合は0を返す関数
+2
+*/

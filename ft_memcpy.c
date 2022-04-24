@@ -6,7 +6,7 @@
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:51:37 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/07 20:18:09 by yuseiikeda       ###   ########.fr       */
+/*   Updated: 2022/04/20 22:22:09 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,9 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
+
+/*
+1,srcからn文字分destへコピーする
+2,\0を含んでいてもコピーを続ける
+3,destとsrcがNULLならNULLで返す
+*/

@@ -6,7 +6,7 @@
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 10:11:30 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/10 12:56:11 by yuseiikeda       ###   ########.fr       */
+/*   Updated: 2022/04/22 21:06:46 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,17 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int        i;
+	size_t	i;
 
-    i = 0;
-    while (s[i])
-        i++;
-    if ((char)c == '\0')
-        return ((char *)&s[i]);
-    while (i--)
-    {
-        if (s[i] == (char)c)
-            return ((char *)&s[i]);
-    }
-    return (NULL);
+	i = 0;
+	while (s[i])
+		i++;
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	while (i--)
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+	}
+	return (NULL);
 }
-

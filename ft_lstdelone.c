@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 16:00:15 by yuikeda           #+#    #+#             */
-/*   Updated: 2022/04/07 20:01:14 by yuseiikeda       ###   ########.fr       */
+/*   Created: 2022/04/17 22:17:48 by yuseiikeda        #+#    #+#             */
+/*   Updated: 2022/04/22 21:14:56 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "libft.h"
 
-void	*memset(void *s, int c, size_t n)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	char	*j;
-	size_t	i;
-
-	i = 0;
-	j = (char *)s;
-
-	while (i < n)
-	{
-		j[i] = c;
-		i++;
-	}
-	return (s);
+	if (!lst)
+		return ;
+	del(lst -> content);
+	free(lst);
 }
-
-

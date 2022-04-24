@@ -6,7 +6,7 @@
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 00:09:04 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/09 09:52:21 by yuseiikeda       ###   ########.fr       */
+/*   Updated: 2022/04/20 22:07:00 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,8 @@ void	*ft_memchr(const void *buf, int c, size_t n)
 //     printf("%s", str1);
 //     return (0);
 // }
+
+/*
+1,bufの先頭からn文字分検索して、文字cがある位置を返す、\0文字があったとしても検索し続ける
+2,
+*/

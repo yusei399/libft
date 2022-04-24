@@ -1,50 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 11:36:32 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/10 11:56:42 by yuseiikeda       ###   ########.fr       */
+/*   Created: 2022/04/17 22:25:24 by yuseiikeda        #+#    #+#             */
+/*   Updated: 2022/04/21 12:18:23 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "libft.h"
 
-int	ft_word_num(char const *s, char c)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	int	i;
-	int	count;
+	t_list	*tmp;
 
-	i = 0;
-	count = 0;
-	while (s[i] != '\0')
+	if (!lst || !del || !*lst)
+		return ;
+	while (lst && *lst)
 	{
-		if (s[i] == c)
-			count++;
-		i++;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	return (count);
 }
-
-int main()
-{
-	char	*str;
-	char	word;
-	int		num;
-
-	str  = "asdf\nghjkls\ndfghj";
-	word = '\n';
-	num = ft_word_num(str, word);
-	printf("%d",num);
-}
-
-// char **ft_split(char const *s, char c)
-// {
-// 	char *str;
-
-// 	str = 
-// }

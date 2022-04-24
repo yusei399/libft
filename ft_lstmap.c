@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 19:48:02 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/20 21:58:50 by yuseiikeda       ###   ########.fr       */
+/*   Created: 2022/04/21 20:29:55 by yuseiikeda        #+#    #+#             */
+/*   Updated: 2022/04/21 20:48:26 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <libft.h>
 
-int	ft_isprint(int c)
-{
-	return (32 <= c && c <= 126);
-}
-
-// int main(void)
-// {
-//     int c;
-//     c = 'a';
-
-//     printf("%d",ft_isprint(c));
-// }
-
-/*
-1,印字文字かどうかを判定する、印字文字であれば1を返しそれ以外であれば0を返す
-*/
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))

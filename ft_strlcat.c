@@ -6,21 +6,25 @@
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:57:37 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/07 19:57:50 by yuseiikeda       ###   ########.fr       */
+/*   Updated: 2022/04/21 22:20:00 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
 	i = 0;
 	j = 0;
 	k = 0;
+	if (dest == NULL && src != NULL && size == 0)
+		return (ft_strlen(src));
 	while (dest[i] != '\0')
 		i++;
 	while (src[j] != '\0')
@@ -44,7 +48,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 //     char            dest1[100] = "Hello";
 // 	char            dest2[100] = "Hello";
 //     char            src[10] = "world";
-//     unsigned int    nb;
+//     size_t    nb;
 
 //     nb = 8;
 //     ft_strlcat(dest1, src, nb);
@@ -56,7 +60,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 //     return (0);
 // }
 
-// unsigned int ft_strlcat(char *dest, char *src, unsigned int size);
+// size_t ft_strlcat(char *dest, char *src, size_t size);
 // int    main()
 // {
 

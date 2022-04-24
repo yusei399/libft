@@ -5,131 +5,105 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 11:41:47 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/10 12:22:10 by yuseiikeda       ###   ########.fr       */
+/*   Created: 2022/04/13 17:42:33 by yuseiikeda        #+#    #+#             */
+/*   Updated: 2022/04/14 15:47:45 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdio.h>
-#include    <unistd.h>
-#include    <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "libft.h"
 
-int	ft_check_char(char    c, char    *charset)
+static size_t	ft_count(char const *s, char c)
 {
-	int    i;
+	size_t	cnt;
 
-	i = 0;
-	while (charset[i] != '\0')
+	cnt = 0;
+	if (!*s)
+		return (0);
+	if (*s != c)
+		cnt++;
+	s++;
+	while (*s)
 	{
-		if (c == charset[i])
-		{
-			return (1);
-		}
-		i++;
+		if (*s != c && *(s - 1) == c)
+			cnt++;
+		s++;
 	}
-	if (c == '\0')
-	{
-		return (1);
-	}
-	return (0);
+	return (cnt);
 }
 
-int	ft_word_num(char    *str, char    *charset)
+static void	ret_free(char **ret)
 {
-	int    i;
-	int    word_num;
+	size_t	i;
 
-	word_num = 0;
 	i = 0;
-	while (str[i] != '\0')
+	while (ret[i])
 	{
-		if (ft_check_char(str[i], charset) == 0)
-		{
-			if (ft_check_char(str[i + 1] == 1, charset) == 1)
-			{
-				word_num++;
-			}
-		}
+		free(ret[i]);
 		i++;
 	}
-	return (word_num);
+	free(ret);
 }
 
-void	ft_pushwords(char    *result, char    *str, char    *charset)
+static char	*ft_strndup(const char *s1, size_t n)
 {
-	int    i;
+	char	*result;
+	size_t	i;
 
+	if (!s1)
+		return (NULL);
+	result = malloc(sizeof(char) * (n + 1));
+	if (!result)
+		return (NULL);
 	i = 0;
-	while (ft_check_char(str[i], charset) == 0)
+	while (s1[i] && i < n)
 	{
-		result[i] = str[i];
+		result[i] = s1[i];
 		i++;
 	}
 	result[i] = '\0';
-}
-
-void	ft_makeresults(char **result, char *str, char *charset)
-{
-	int	i;
-	int	j;
-	int	word;
-
-	word = 0;
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (ft_check_char(str[i], charset) == 1)
-			i++;
-		else
-		{
-			j = 0;
-			while (ft_check_char(str[i + j], charset) == 0)
-				j++;
-			result[word] = (char *)malloc(sizeof(char) * (j + 1));
-			ft_pushwords(result[word], str + i, charset);
-			i += j;
-			word++;
-		}
-	}
-}
-
-char **ft_split(char const *s, char c);
-{
-	char	**result;
-	int		words;
-
-	words = ft_word_num(str, charset);
-	result = (char **)malloc(sizeof(char *) * (words));
-	ft_makeresults(result, str, charset);
 	return (result);
 }
 
-// int    main()
-// {
-// 	char str[] = "12345a45678ahjkkl";
-// 	char charset[]= "a";
-// 	char **result;
+static int	ft_strsplit(char **ret, char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
 
-// 	result = ft_split(str, charset);
-// 	printf("%s\n", result[0]);
-// 	printf("%s\n", result[1]);
-// 	printf("%s\n",result[2]);
-// }
+	j = 0;
+	while (*s)
+	{
+		if (*s == c)
+		{
+			s++;
+			continue ;
+		}
+		i = 0;
+		while (*(s + i) && *(s + i) != c)
+			i++;
+		ret[j] = ft_strndup(s, i);
+		if (!ret[j])
+		{
+			ret_free(ret);
+			return (0);
+		}
+		s += i;
+		j++;
+	}
+	ret[j] = 0;
+	return (1);
+}
 
-// int	main(void)
-// {
-// 	char	*str = "";
+char	**ft_split(char const *s, char c)
+{
+	char	**ret;
 
-// 	printf("start\n");
-// 	char	*charset = "";
-
-// 	char	**str_split = ft_split(str, charset);
-// 	int	i = 0;
-
-// 	while (str_split[i])
-// 	{
-// 		pritnf("%s\n", str_split[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	ret = malloc(sizeof(char *) * (ft_count(s, c) + 1));
+	if (!s || !ret)
+		return (NULL);
+	if (!ft_strsplit(ret, s, c))
+		return (NULL);
+	return (ret);
+}

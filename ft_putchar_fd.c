@@ -6,7 +6,7 @@
 /*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:07:11 by yuseiikeda        #+#    #+#             */
-/*   Updated: 2022/04/08 15:10:35 by yuseiikeda       ###   ########.fr       */
+/*   Updated: 2022/04/20 22:33:49 by yuseiikeda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,7 @@ void	ft_putchar_fd(char c, int fd)
 //     char c = "a";
 //     int fd = 1;
 // }
+
+/*
+1,ファイルディスクプリタを入れる
+*/

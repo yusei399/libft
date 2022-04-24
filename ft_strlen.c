@@ -1,19 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuseiikeda <yuseiikeda@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/21 12:14:00 by yuseiikeda        #+#    #+#             */
+/*   Updated: 2022/04/21 12:14:14 by yuseiikeda       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdio.h>
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int		len;
-	char	*number;
+	size_t	i;
 
-	len = 0;
-	number = str;
-	while (*number != '\0')
-	{
-		len++;
-		number += 1;
-	}
-	return (len);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 // int	main(void)
@@ -24,4 +31,15 @@ int	ft_strlen(char *str)
 // 	str = "1234567890";
 // 	a = ft_strlen(str);
 // 	printf("%d \n", a);
+// }
+
+// int main()
+// {
+// 	const char *str;
+
+// 	str = NULL;
+
+// 	int i = ft_strlen(str);
+// 	printf("%d", i);
+
 // }
